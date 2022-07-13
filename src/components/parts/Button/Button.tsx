@@ -2,12 +2,14 @@ import * as styles from './Button.styles'
 
 type ButtonProps = {
   text: string
-  onClick: () => void
+  type: 'button' | 'submit'
+  disabled?: boolean
+  onClick?: () => void
 }
 
 export const Button = (props: ButtonProps) => {
   return (
-    <button css={styles.button} onClick={props.onClick}>
+    <button type={props.type} css={styles.button} onClick={props.onClick} disabled={props.disabled}>
       {props.text}
     </button>
   )

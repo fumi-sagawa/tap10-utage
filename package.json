@@ -22,16 +22,18 @@
     "trailingComma": "es5",
     "semi": false,
     "singleQuote": true,
-    "printWidth": 120
+    "printWidth": 80
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/react": "^11.9.3",
+    "@hookform/resolvers": "^2.9.5",
     "framer-motion": "^6.3.16",
     "next": "12.1.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.33.1"
+    "react-hook-form": "^7.33.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.5.5",

@@ -1,7 +1,9 @@
 import type { NextPage } from 'next'
 
+import { Entry } from '@/components/pages/Entry'
+
 const TopPage: NextPage = () => {
-  return <div>サンプル</div>
+  return <Entry></Entry>
 }
 
 export default TopPage

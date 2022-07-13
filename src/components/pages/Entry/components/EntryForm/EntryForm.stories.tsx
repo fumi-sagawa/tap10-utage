@@ -2,14 +2,13 @@ import { action } from '@storybook/addon-actions'
 import type { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/testing-library'
 
-import { Form } from './Form'
+import { EntryForm } from './EntryForm'
 
 export default {
-  component: Form,
-} as ComponentMeta<typeof Form>
+  component: EntryForm,
+} as ComponentMeta<typeof EntryForm>
 
-export const Index: ComponentStoryObj<typeof Form> = {
-  args: { onClick: action('クリック') },
+export const Index: ComponentStoryObj<typeof EntryForm> = {
   parameters: {
     docs: {
       description: {
@@ -21,15 +20,5 @@ export const Index: ComponentStoryObj<typeof Form> = {
     const canvas = within(canvasElement)
     //以下にインタラクションを記述
     // userEvent.click(canvas.getByRole('button'))
-  },
-}
-export const Variation: ComponentStoryObj<typeof Form> = {
-  args: { onClick: action('クリック') },
-  parameters: {
-    docs: {
-      description: {
-        story: `Storyの説明マークダウン。`,
-      },
-    },
   },
 }

@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 
 export const button = css`
-  background-color: #666;
+  border: 1px solid #333;
   font-size: 16px;
-  color: white;
+  color: #333333;
   padding: 10px;
-  border-radius: 99px;
+  border-radius: 10px;
 `
