@@ -21,46 +21,45 @@ export const EntryForm = (props: Props) => {
     props.defaultValues
   )
   return (
-    <div>
-      <p>まずはエントリーしてね</p>
-      <form onSubmit={handleSubmit}>
-        <Controller
-          name="team"
-          control={methods.control}
-          render={({ field }) => (
-            <Select
-              label={'チーム名'}
-              options={[
-                { value: 'chocolate', label: 'Chocolate' },
-                { value: 'strawberry', label: 'Strawberry' },
-                { value: 'vanilla', label: 'Vanilla' },
-              ]}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              error={methods.formState.errors.name?.message}
-            />
-          )}
-        />
-        <Controller
-          name="name"
-          control={methods.control}
-          render={({ field }) => (
-            <Input
-              label={'名前'}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              error={methods.formState.errors.team?.message}
-            />
-          )}
-        />
-        <Button
-          text={'エントリー'}
-          type={'submit'}
-          disabled={!methods.formState.isValid} // here
-        />
-      </form>
-    </div>
+    <form css={styles.form} onSubmit={handleSubmit}>
+      <Controller
+        name="team"
+        control={methods.control}
+        render={({ field }) => (
+          <Select
+            label={'チーム名'}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            value={field.value}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+            error={methods.formState.errors.team?.message}
+            id={'team'}
+          />
+        )}
+      />
+      <Controller
+        name="name"
+        control={methods.control}
+        render={({ field }) => (
+          <Input
+            label={'名前'}
+            value={field.value}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+            error={methods.formState.errors.name?.message}
+            id={'name'}
+          />
+        )}
+      />
+      <Button
+        text={'エントリー'}
+        type={'submit'}
+        disabled={!methods.formState.isValid} // here
+      />
+    </form>
   )
 }

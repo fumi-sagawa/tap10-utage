@@ -13,7 +13,6 @@ type ConfirmationProps = {
 export const Confirmation = (props: ConfirmationProps) => {
   return (
     <div>
-      <p>まずはエントリーしてね</p>
       <div>
         <TextWithLabel title={'チーム名'} text={props.team} />
         <TextWithLabel title={'名前'} text={props.name} />

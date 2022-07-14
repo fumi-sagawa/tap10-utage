@@ -1,7 +1,10 @@
+import { useState } from 'react'
+
 import * as styles from './Select.styles'
 
 type SelectProps = {
   label: string
+  id: string
   value: string
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
   onBlur: () => void
@@ -10,13 +13,23 @@ type SelectProps = {
 }
 
 export const Select = (props: SelectProps) => {
+  //プレースホルダの色分け用
+  const selected = props.value === '' ? false : true
+
   return (
     <div css={styles.container}>
-      <label htmlFor="">{props.label}</label>
+      <label htmlFor={props.id}>{props.label}</label>
       <div css={styles.inner}>
-        <select value={props.value} onChange={props.onChange} onBlur={props.onBlur}>
+        <select
+          css={styles.select(selected)}
+          value={props.value}
+          // onChange={props.onChange}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          id={props.id}
+        >
           {/* プレースホルダの役割 */}
-          <option value="" disabled selected style={{ display: 'none' }}>
+          <option value="" disabled>
             選択してください
           </option>
           {props.options.map((item) => (

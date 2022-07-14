@@ -16,10 +16,17 @@ export const Entry = () => {
   } = useEntry()
   return (
     <div css={styles.container}>
-      <h1>
-        <span>TAM30周年記念ゲームアプリ</span>
+      <h1 css={styles.title}>
+        <span>
+          TAM30周年記念ゲームアプリ
+          <br />
+        </span>
         タップバトル(仮)
       </h1>
+      <p css={styles.explanation}>
+        {pageState === 'input' && 'まずはエントリーしてね'}
+        {pageState === 'confirmation' && 'この内容でエントリーしますか？'}
+      </p>
       {pageState === 'input' && (
         <EntryForm
           handleClick={goToComfirmation}
