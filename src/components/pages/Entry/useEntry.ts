@@ -1,4 +1,8 @@
+import { useAtom } from 'jotai'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+
+import { userInfoAtom } from '@/store/userInfoStore'
 
 export type UserInfo = {
   name: string
@@ -6,11 +10,13 @@ export type UserInfo = {
 }
 
 export const useEntry = () => {
+  const router = useRouter()
   //ユーザー情報
-  const [userInfo, setUserInfo] = useState<UserInfo>({ name: '', team: '' })
+  const [userInfo, setUserInfo] = useAtom(userInfoAtom)
+
   const handleEntry = () => {
     //TODO:supabaseに登録
-    console.log('entry!')
+    router.push('/play')
   }
 
   //ページ操作

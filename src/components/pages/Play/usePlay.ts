@@ -1,18 +1,25 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useAtom } from 'jotai'
+import { useEffect, useState } from 'react'
 import Snd from 'snd-lib'
 
+import { userInfoAtom } from '@/store/userInfoStore'
+
 export const usePlay = (userLength: number) => {
+  //制限時間
+  const timeLimit = 5000
+
   const [isPlayng, setIsPlaying] = useState<boolean>(false)
+  const [isEnd, setIsEnd] = useState<boolean>(false)
   const [tapCount, setTapCount] = useState<number>(0)
   const [userNumber, setUserNumber] = useState<number>(0)
-  const [time, setTime] = useState<number>(0)
+  const [time, setTime] = useState<number>(timeLimit)
   const [isSoundOn, setIsSoundOn] = useState(false)
+  const [userInfo, _] = useAtom(userInfoAtom)
   const [snd, setSnd] = useState<Snd>()
 
   //TODO:画像プリロードする
 
   // ゲームの初期値設定
-  const timeLimit = 5000
   const initializeGame = () => {
     setTapCount(0)
     setTime(timeLimit)
@@ -34,6 +41,7 @@ export const usePlay = (userLength: number) => {
   const startGame = () => {
     initializeGame()
     setIsPlaying(true)
+    setIsEnd(false)
   }
 
   //カウンター
@@ -46,6 +54,7 @@ export const usePlay = (userLength: number) => {
       if (time === 0) {
         clearInterval(timer)
         setIsPlaying(false)
+        setIsEnd(true)
         return
       }
       setTime((time) => time - deltaTime)
@@ -75,5 +84,7 @@ export const usePlay = (userLength: number) => {
     timeLimit,
     isSoundOn,
     toggleSound,
+    userInfo,
+    isEnd,
   }
 }

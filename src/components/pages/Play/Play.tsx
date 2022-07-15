@@ -27,37 +27,51 @@ export const Play = () => {
     timeLimit,
     isSoundOn,
     toggleSound,
+    userInfo,
+    isEnd,
   } = usePlay(imagePaths.length)
   return (
     <div>
       <h1 css={styles.title}>TAM30周年記念ゲームアプリ タップバトル</h1>
-      <p>TAMKO 松添 さんの挑戦</p>
-      <p>{timeLimit / 1000}秒で何回タップできるか？</p>
-      <TapButton
-        isPlaying={isPlayng}
-        onClick={handleClickTapButton}
-        tapCount={tapCount}
-      />
-      {/* <Image
+      <p>
+        {userInfo.team} {userInfo.name} さんの挑戦
+      </p>
+      <div>
+        <p>{timeLimit / 1000}秒で何回タップできるか？</p>
+        <TapButton
+          isPlaying={isPlayng}
+          onClick={handleClickTapButton}
+          tapCount={tapCount}
+        />
+        {/* <Image
         src={imagePaths[userNumber] as string}
         alt="TAMメンバーの素敵な写真"
         objectFit={'cover'}
         height={100}
         width={100}
       /> */}
-      <p>
-        残り時間 <span id="js-time">{(time / 1000).toFixed(2)}</span> 秒
-      </p>
-      <p>TIME UP!</p>
-      <Button onClick={startGame} text={'START'} type={'button'} />
-      <Button
-        onClick={() => {
-          router.push('result')
-        }}
-        text={'結果を見る'}
-        type={'button'}
-      />
-      <Sound onClick={toggleSound} isOn={isSoundOn} />
+        <p>
+          残り時間 <span id="js-time">{(time / 1000).toFixed(2)}</span> 秒
+        </p>
+        {isEnd && (
+          <>
+            <p>TIME UP!</p>
+            <Button
+              onClick={() => {
+                router.push('result')
+              }}
+              text={'結果を見る'}
+              type={'button'}
+            />
+          </>
+        )}
+        {!isEnd && !isPlayng && (
+          <>
+            <Button onClick={startGame} text={'START'} type={'button'} />
+            <Sound onClick={toggleSound} isOn={isSoundOn} />
+          </>
+        )}
+      </div>
     </div>
   )
 }
