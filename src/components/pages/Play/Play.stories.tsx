@@ -16,9 +16,9 @@ export const Index: ComponentStoryObj<typeof Play> = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-    //以下にインタラクションを記述
-    // userEvent.click(canvas.getByRole('button'))
-  },
+  // play: async ({ canvasElement }) => {
+  //   const canvas = within(canvasElement)
+  //   //以下にインタラクションを記述
+  //   // userEvent.click(canvas.getByRole('button'))
+  // },
 }

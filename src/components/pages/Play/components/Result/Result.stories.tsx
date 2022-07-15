@@ -9,6 +9,12 @@ export default {
 } as ComponentMeta<typeof Result>
 
 export const Index: ComponentStoryObj<typeof Result> = {
+  args: {
+    tapCount: 0,
+    memberIllustrationImageSrc: '/sample1.jpg',
+    memberName: 'sample',
+    memberProfileImageSrc: '/sample1.jpg',
+  },
   parameters: {
     docs: {
       description: {

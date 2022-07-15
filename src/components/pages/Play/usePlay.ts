@@ -10,7 +10,7 @@ export const usePlay = (userLength: number) => {
 
   const [isPlayng, setIsPlaying] = useState<boolean>(false)
   const [isEnd, setIsEnd] = useState<boolean>(false)
-  const [pageStae, setPageState] = useState<'playng' | 'result'>('playng')
+  const [pageStae, setPageState] = useState<'playng' | 'result'>('result')
   const [tapCount, setTapCount] = useState<number>(0)
   const [userNumber, setUserNumber] = useState<number>(0)
   const [time, setTime] = useState<number>(timeLimit)

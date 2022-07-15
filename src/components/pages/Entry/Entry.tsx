@@ -11,9 +11,15 @@ export const Entry = () => {
     goToComfirmation,
     backToInput,
     handleEntry,
-    setUserInfo,
+    handleSetUserInfo,
     userInfo,
+    teamName,
+    loading,
+    selectOptions,
   } = useEntry()
+
+  if (loading) return <div>loading...</div>
+
   return (
     <div css={styles.container}>
       <h1 css={styles.title}>
@@ -30,13 +36,15 @@ export const Entry = () => {
       {pageState === 'input' && (
         <EntryForm
           handleClick={goToComfirmation}
-          setUserInfo={setUserInfo}
+          setUserInfo={handleSetUserInfo}
           defaultValues={userInfo}
+          selectOptions={selectOptions}
         />
       )}
       {pageState === 'confirmation' && (
         <Confirmation
-          team={userInfo.team}
+          // team={userInfo.team}
+          team={teamName}
           name={userInfo.name}
           handleClickBack={backToInput}
           handleClickEntry={handleEntry}

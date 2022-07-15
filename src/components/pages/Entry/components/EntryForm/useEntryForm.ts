@@ -9,6 +9,7 @@ export const useEntryForm = (
   setUserInfo: (newState: { name: string; team: string }) => void,
   defaultValues: UserInfo
 ) => {
+  //フォーム
   const schema = yup.object({
     name: yup.string().required('入力してください'),
     team: yup.string().required('入力してください'),
@@ -19,7 +20,6 @@ export const useEntryForm = (
     defaultValues: defaultValues,
   })
   const handleSubmit = methods.handleSubmit((data) => {
-    console.log(data)
     setUserInfo(data)
     handleClick()
   })

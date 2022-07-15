@@ -9,26 +9,11 @@ export default {
 } as ComponentMeta<typeof Sound>
 
 export const Index: ComponentStoryObj<typeof Sound> = {
-  args: { onClick: action('クリック') },
+  args: { onClick: action('クリック'), isOn: false },
   parameters: {
     docs: {
       description: {
         component: `コンポーネントの説明マークダウン。`,
-      },
-    },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-    //以下にインタラクションを記述
-    // userEvent.click(canvas.getByRole('button'))
-  },
-}
-export const Variation: ComponentStoryObj<typeof Sound> = {
-  args: { onClick: action('クリック') },
-  parameters: {
-    docs: {
-      description: {
-        story: `Storyの説明マークダウン。`,
       },
     },
   },

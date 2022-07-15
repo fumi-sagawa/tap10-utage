@@ -40,20 +40,20 @@ export const Game = (props: GameProps) => {
         残り時間 <span id="js-time">{(props.time / 1000).toFixed(2)}</span> 秒
       </p>
       {!props.isEnd && !props.isPlayng && (
-        <>
+        <div>
           <Button onClick={props.onClickStart} text={'START'} type={'button'} />
           <Sound onClick={props.onClickToggle} isOn={props.isSoundOn} />
-        </>
+        </div>
       )}
       {props.isEnd && (
-        <>
+        <div>
           <p>TIME UP!</p>
           <Button
             onClick={props.onClickResult}
             text={'結果を見る'}
             type={'button'}
           />
-        </>
+        </div>
       )}
     </div>
   )

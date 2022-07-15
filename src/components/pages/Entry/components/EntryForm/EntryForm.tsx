@@ -12,6 +12,7 @@ export type Props = {
   handleClick: () => void
   setUserInfo: (newState: { name: string; team: string }) => void
   defaultValues: UserInfo
+  selectOptions: { label: string; value: string }[]
 }
 
 export const EntryForm = (props: Props) => {
@@ -20,6 +21,7 @@ export const EntryForm = (props: Props) => {
     props.setUserInfo,
     props.defaultValues
   )
+
   return (
     <form css={styles.form} onSubmit={handleSubmit}>
       <Controller
@@ -28,11 +30,7 @@ export const EntryForm = (props: Props) => {
         render={({ field }) => (
           <Select
             label={'チーム名'}
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
+            options={props.selectOptions}
             value={field.value}
             onChange={field.onChange}
             onBlur={field.onBlur}
