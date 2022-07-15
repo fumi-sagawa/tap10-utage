@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { supabase } from '@/lib/supabaseClient'
-
-// supabase
-type TeamMaster = {
-  id: number
-  created_at: string
-  team_name: string
-  team_value: string
-}
+import type { TeamMaster } from '@/types/supabase'
 
 export const useTeamSelectOption = () => {
   //supabaase

@@ -7,7 +7,6 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
 }
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  console.log(process.env.NEXT_PUBLIC_SUPABASE_URL)
   return <Component {...pageProps} />
 }
 

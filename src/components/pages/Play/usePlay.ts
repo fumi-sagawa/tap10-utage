@@ -1,8 +1,10 @@
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 import { useEffect, useState } from 'react'
 import Snd from 'snd-lib'
 
-import { userInfoAtom } from '@/store/userInfoStore'
+import { supabase } from '@/lib/supabaseClient'
+import { userIdAtom, userInfoAtom } from '@/store/userInfoStore'
+import type { Entry } from '@/types/supabase'
 
 export const usePlay = (userLength: number) => {
   //制限時間
@@ -10,13 +12,14 @@ export const usePlay = (userLength: number) => {
 
   const [isPlayng, setIsPlaying] = useState<boolean>(false)
   const [isEnd, setIsEnd] = useState<boolean>(false)
-  const [pageStae, setPageState] = useState<'playng' | 'result'>('result')
+  const [pageStae, setPageState] = useState<'playng' | 'result'>('playng')
   const [tapCount, setTapCount] = useState<number>(0)
   const [userNumber, setUserNumber] = useState<number>(0)
   const [time, setTime] = useState<number>(timeLimit)
   const [isSoundOn, setIsSoundOn] = useState(false)
-  const [userInfo, _] = useAtom(userInfoAtom)
+  const userInfo = useAtomValue(userInfoAtom)
   const [snd, setSnd] = useState<Snd>()
+  const userId = useAtomValue(userIdAtom)
 
   //TODO:画像プリロードする
 
@@ -45,8 +48,20 @@ export const usePlay = (userLength: number) => {
     setIsEnd(false)
   }
 
-  const handleClickResult = () => {
+  const handleClickResult = async () => {
+    //TODO:upsert
     setPageState('result')
+    const { data, error } = await supabase.from<Entry>('entry').upsert({
+      id: userId,
+      tap_count: tapCount,
+      played: true,
+    })
+    if (error) {
+      throw error
+    }
+    if (data) {
+      console.log(data[0])
+    }
   }
 
   //カウンター
