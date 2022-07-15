@@ -5,7 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noUncheckedIndexedAccess": true, // restrict index signature
+    // "noUncheckedIndexedAccess": true, // restrict index signature
     "exactOptionalPropertyTypes": true, // restrict optional property
     "noImplicitReturns": true, // requires a write of all return values in the function
     "noFallthroughCasesInSwitch": true, // must write 'break' for fallthrough in switch

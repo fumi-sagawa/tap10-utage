@@ -10,6 +10,7 @@ export const usePlay = (userLength: number) => {
 
   const [isPlayng, setIsPlaying] = useState<boolean>(false)
   const [isEnd, setIsEnd] = useState<boolean>(false)
+  const [pageStae, setPageState] = useState<'playng' | 'result'>('playng')
   const [tapCount, setTapCount] = useState<number>(0)
   const [userNumber, setUserNumber] = useState<number>(0)
   const [time, setTime] = useState<number>(timeLimit)
@@ -44,6 +45,10 @@ export const usePlay = (userLength: number) => {
     setIsEnd(false)
   }
 
+  const handleClickResult = () => {
+    setPageState('result')
+  }
+
   //カウンター
   const deltaTime = 10
   useEffect(() => {
@@ -67,7 +72,7 @@ export const usePlay = (userLength: number) => {
     setSnd(new Snd())
   }, [])
   useEffect(() => {
-    snd?.load(Snd.KITS.SND01 as string)
+    snd?.load(Snd.KITS.SND01)
   }, [snd])
 
   const toggleSound = () => {
@@ -82,6 +87,8 @@ export const usePlay = (userLength: number) => {
     userNumber,
     time,
     timeLimit,
+    handleClickResult,
+    pageStae,
     isSoundOn,
     toggleSound,
     userInfo,
