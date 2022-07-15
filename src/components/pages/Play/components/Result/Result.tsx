@@ -11,7 +11,7 @@ type ResultProps = {
 
 export const Result = (props: ResultProps) => {
   return (
-    <div>
+    <div css={styles.container}>
       <p>あなたの結果は</p>
       <p>{props.tapCount}回</p>
       <p>結果発表をお待ちください (画面が自動で変わります)</p>
