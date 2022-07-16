@@ -49,7 +49,6 @@ export const usePlay = (userLength: number) => {
   }
 
   const handleClickResult = async () => {
-    //TODO:upsert
     setPageState('result')
     const { data, error } = await supabase.from<Entry>('entry').upsert({
       id: userId,
@@ -57,11 +56,11 @@ export const usePlay = (userLength: number) => {
       played: true,
     })
     if (error) {
+      //TODO:エラーページに飛ばそうね
       throw error
     }
-    if (data) {
-      console.log(data[0])
-    }
+    // if (data) {
+    // }
   }
 
   //カウンター

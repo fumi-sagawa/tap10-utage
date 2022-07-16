@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { Button } from '@/components/parts/Button'
 
 // import * as styles from './Result.styles'
-// import { useResult } from './useResult'
+import { useResult } from './useResult'
 
 export const Result = () => {
-  // const {} = useResult()
+  useResult()
   return (
     <div>
       {/* TODO: いい感じの切り替わりアニメーション */}

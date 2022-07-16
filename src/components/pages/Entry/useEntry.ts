@@ -1,10 +1,15 @@
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useTeamSelectOption } from '@/hooks/useTeamSelectOption'
 import { supabase } from '@/lib/supabaseClient'
-import { userIdAtom, userInfoAtom } from '@/store/userInfoStore'
+import {
+  gameKeyAtom,
+  userIdAtom,
+  userInfoAtom,
+  userTeamJpAtom,
+} from '@/store/userInfoStore'
 import type { Entry } from '@/types/supabase'
 
 export type UserInfo = {
@@ -16,14 +21,31 @@ export const useEntry = () => {
   const { loading, selectOptions } = useTeamSelectOption()
   const router = useRouter()
 
-  //ユーザー情報
+  /* 
+  Entry表示時gemeのユニークkey取得
+  */
+  const [gameKey, setGameKey] = useAtom(gameKeyAtom)
+  useEffect(() => {
+    //型ガード
+    if (typeof router.query.key !== 'string') {
+      // TODO:エラーページに飛ばそうかな
+      return
+    }
+    if (router.isReady) {
+      setGameKey(router.query.key)
+    }
+  }, [router.isReady, router.query.key, setGameKey])
+
+  /* 
+  ユーザー情報
+  */
   const [userInfo, setUserInfo] = useAtom(userInfoAtom)
   const [_, setUserId] = useAtom(userIdAtom)
-  const [teamName, setTeamName] = useState('')
+  const [teamNameJp, setTeamNameJp] = useAtom(userTeamJpAtom)
 
   const handleSetUserInfo = (user: { name: string; team: string }) => {
     setUserInfo(user)
-    setTeamName(
+    setTeamNameJp(
       selectOptions.filter((item) => item.value === user.team)[0]
         ?.label as string
     )
@@ -33,7 +55,7 @@ export const useEntry = () => {
     const { data, error } = await supabase.from<Entry>('entry').insert({
       full_name: userInfo.name,
       team: userInfo.team,
-      game_key: router.query.key as string,
+      game_key: gameKey,
     })
     if (error) {
       throw error
@@ -45,7 +67,9 @@ export const useEntry = () => {
     }
   }
 
-  //ページ操作
+  /* 
+  ページ操作
+  */
   const [pageState, setPageState] = useState<'input' | 'confirmation'>('input')
   const backToInput = () => {
     setPageState('input')
@@ -62,7 +86,7 @@ export const useEntry = () => {
     handleSetUserInfo,
     setUserInfo,
     userInfo,
-    teamName,
+    teamNameJp,
     loading,
     selectOptions,
   }

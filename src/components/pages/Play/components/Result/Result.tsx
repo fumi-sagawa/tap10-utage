@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import * as styles from './Result.styles'
+import { useResult } from './useResult'
 
 type ResultProps = {
   tapCount: number
@@ -10,6 +11,7 @@ type ResultProps = {
 }
 
 export const Result = (props: ResultProps) => {
+  const { isModalVisible, toggleModal } = useResult()
   return (
     <div css={styles.container}>
       <p>あなたの結果は</p>
@@ -24,18 +26,22 @@ export const Result = (props: ResultProps) => {
           height={100}
           width={100}
         />
-        <button>{props.memberName}さん プロフィールはこちら</button>
+        <button onClick={toggleModal}>
+          {props.memberName}さん プロフィールはこちら
+        </button>
       </div>
-      <div>
-        <button>バツ</button>
-        <Image
-          src={props.memberProfileImageSrc}
-          alt="TAMメンバーの素敵なプロフィール"
-          objectFit={'cover'}
-          height={100}
-          width={100}
-        />
-      </div>
+      {isModalVisible && (
+        <div onClick={toggleModal}>
+          <button>バツ</button>
+          <Image
+            src={props.memberProfileImageSrc}
+            alt="TAMメンバーの素敵なプロフィール"
+            objectFit={'cover'}
+            height={100}
+            width={100}
+          />
+        </div>
+      )}
     </div>
   )
 }

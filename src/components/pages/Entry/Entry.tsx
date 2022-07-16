@@ -13,7 +13,7 @@ export const Entry = () => {
     handleEntry,
     handleSetUserInfo,
     userInfo,
-    teamName,
+    teamNameJp,
     loading,
     selectOptions,
   } = useEntry()
@@ -43,8 +43,7 @@ export const Entry = () => {
       )}
       {pageState === 'confirmation' && (
         <Confirmation
-          // team={userInfo.team}
-          team={teamName}
+          team={teamNameJp}
           name={userInfo.name}
           handleClickBack={backToInput}
           handleClickEntry={handleEntry}

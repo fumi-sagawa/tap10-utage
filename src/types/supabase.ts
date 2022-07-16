@@ -8,10 +8,16 @@ export type Entry = {
   game_key: string
 }
 
-// supabase
 export type TeamMaster = {
   id: number
   created_at: string
   team_name: string
   team_value: string
+}
+
+export type Game = {
+  id: number
+  created_at: string
+  key: string
+  finished: boolean
 }
