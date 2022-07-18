@@ -22,20 +22,23 @@ type GameProps = {
 
 export const Game = (props: GameProps) => {
   return (
-    <div>
+    <div css={styles.container}>
       <p>{props.timeLimit / 1000}秒で何回タップできるか？</p>
       <TapButton
         isPlaying={props.isPlayng}
+        isEnd={props.isEnd}
         onClick={props.onClickTapButton}
         tapCount={props.tapCount}
+        imageSrc={props.imageSrc}
       />
-      <Image
+      {/* <Image
         src={props.imageSrc}
         alt="TAMメンバーの素敵な写真"
         objectFit={'cover'}
         height={100}
         width={100}
-      />
+      /> */}
+
       <p>
         残り時間 <span id="js-time">{(props.time / 1000).toFixed(2)}</span> 秒
       </p>

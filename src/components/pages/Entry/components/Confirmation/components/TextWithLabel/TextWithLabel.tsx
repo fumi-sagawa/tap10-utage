@@ -7,7 +7,7 @@ type TextWithLabelProps = {
 
 export const TextWithLabel = (props: TextWithLabelProps) => {
   return (
-    <div>
+    <div css={styles.container}>
       <span>{props.title}</span>
       <p>{props.text}</p>
     </div>

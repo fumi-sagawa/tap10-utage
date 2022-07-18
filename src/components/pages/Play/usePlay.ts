@@ -38,6 +38,9 @@ export const usePlay = (userLength: number) => {
     setTapCount((count) => count + 1)
     changeImage()
     if (isSoundOn) {
+      if (tapCount === 29) {
+        snd?.playCelebration()
+      }
       snd?.playButton()
     }
   }

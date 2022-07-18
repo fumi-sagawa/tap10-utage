@@ -21,8 +21,14 @@ export const Play = () => {
     userInfo,
     isEnd,
   } = usePlay(memberInfoList.length)
+
+  const imageSrc =
+    tapCount === 29
+      ? '/tamkun.png'
+      : memberInfoList[userNumber]?.illustrationImageSrc
+
   return (
-    <div>
+    <div css={styles.container}>
       <h1 css={styles.title}>TAM30周年記念ゲームアプリ タップバトル</h1>
       <p>
         {userInfo.team} {userInfo.name} さんの挑戦
@@ -33,7 +39,8 @@ export const Play = () => {
           isEnd={isEnd}
           time={time}
           timeLimit={timeLimit}
-          imageSrc={memberInfoList[userNumber]?.illustrationImageSrc}
+          imageSrc={imageSrc}
+          // imageSrc={imageSrc}
           onClickTapButton={handleClickTapButton}
           tapCount={tapCount}
           onClickStart={startGame}

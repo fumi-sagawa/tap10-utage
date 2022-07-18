@@ -419,3 +419,8 @@ th {
   text-align: left;
   font-weight: bold;
 }
+
+//タブルタップでズームを無効
+html {
+  touch-action: manipulation;
+}

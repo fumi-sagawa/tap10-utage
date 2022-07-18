@@ -3,10 +3,8 @@ import { css } from '@emotion/react'
 export const container = css`
   display: grid;
   gap: 24px;
-  grid-template-columns: 1fr minmax(auto, 300px) 1fr;
-  & > * {
-    grid-column: 2/3;
-  }
+  max-width: 390px;
+  margin: 0 auto;
 `
 
 export const title = css`

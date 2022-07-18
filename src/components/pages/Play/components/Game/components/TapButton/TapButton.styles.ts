@@ -5,18 +5,28 @@ export const button = css`
   height: 200px;
   border-radius: 50%;
   color: #fff;
-  background-color: #a0ce00;
+  background-color: #74a16a;
   border: none;
   outline: none;
   font-size: 20px;
-  margin-bottom: 30px;
   cursor: pointer;
   &:disabled {
     background-color: #ddd;
     color: #aaa;
   }
+  display: grid;
+  justify-items: center;
+  align-content: center;
 `
 
 export const buttonText = css`
   font-size: 60px;
+`
+
+export const imageButton = css`
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
 `
