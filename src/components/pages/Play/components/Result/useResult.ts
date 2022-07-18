@@ -17,6 +17,7 @@ export const useResult = () => {
   // 管理画面起点で画面遷移を操作するためのサブスクリプション
   const gameKey = useAtomValue(gameKeyAtom)
   useEffect(() => {
+    console.log('サブスクライブ')
     const subscription = supabase
       .from<Game>(`game:key=eq.${gameKey}`)
       .on('*', (payload) => {
@@ -33,6 +34,6 @@ export const useResult = () => {
         supabase.removeSubscription(subscription)
       }
     }
-  })
+  }, [])
   return { isModalVisible, toggleModal }
 }

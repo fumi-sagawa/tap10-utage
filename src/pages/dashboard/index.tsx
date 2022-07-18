@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 
-import { Create } from '@/components/pages/Create'
+import { Dashboard } from '@/components/pages/Dashboard'
 
 const TopPage: NextPage = () => {
-  return <Create></Create>
+  return <Dashboard></Dashboard>
 }
 
 export default TopPage
