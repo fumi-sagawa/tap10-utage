@@ -1,15 +1,12 @@
 import { useRouter } from 'next/router'
 
-import { Ranking } from './components/Ranking'
+import { RankingContainer } from './components/RankingContainer'
 import { Table } from './components/Table'
 import * as styles from './Dashboard.styles'
-// import { useDashboard } from './useDashboard'
 
 export const Dashboard = () => {
   const router = useRouter()
-  console.log(router.query.key)
 
-  // const { gameKey } = useDashboard()
   return (
     <div css={styles.wrapper}>
       <h1 css={styles.title}>
@@ -18,7 +15,7 @@ export const Dashboard = () => {
       {router.query.key ? (
         <div css={styles.container}>
           <Table gameKey={router.query.key as string} />
-          {/* <Ranking /> */}
+          <RankingContainer gameKey={router.query.key as string} />
         </div>
       ) : (
         <div>立ち上げ中...</div>

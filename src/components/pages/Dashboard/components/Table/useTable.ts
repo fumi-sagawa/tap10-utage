@@ -35,7 +35,7 @@ export const useTable = (gameKey: string) => {
         //チーム名の加工
         const labelJp = teamNameData.filter(
           (teamNameItem) => teamNameItem.team_value === item.team
-        )[0]?.team_name as string
+        )[0]?.team_name
         //日付の加工
         const date = DateTime.fromISO(item.created_at)
         return {
@@ -52,7 +52,7 @@ export const useTable = (gameKey: string) => {
   //サブスクライブ
   useEffect(() => {
     const subscription = supabase
-      .from<Entry>('entry')
+      .from<Entry>(`entry:game_key=eq.${gameKey}`)
       .on('*', (payload) => {
         fetchData()
       })

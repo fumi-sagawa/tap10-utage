@@ -16,3 +16,9 @@ export const container = css`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `
+
+export const rankingContainer = css`
+  display: grid;
+  gap: 48px;
+  justify-items: center;
+`
