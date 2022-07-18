@@ -24,7 +24,7 @@ export const useResult = () => {
         console.log('Change received!', payload.new.finished)
         // TODO
         if (payload.new.finished === true) {
-          router.push('/result')
+          router.push(`/result/?key=${gameKey}`)
         }
       })
       .subscribe()
