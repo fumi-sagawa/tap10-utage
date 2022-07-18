@@ -9,7 +9,6 @@ export default {
 } as ComponentMeta<typeof Ranking>
 
 export const Index: ComponentStoryObj<typeof Ranking> = {
-  args: { onClick: action('クリック') },
   parameters: {
     docs: {
       description: {
@@ -21,15 +20,5 @@ export const Index: ComponentStoryObj<typeof Ranking> = {
     const canvas = within(canvasElement)
     //以下にインタラクションを記述
     // userEvent.click(canvas.getByRole('button'))
-  },
-}
-export const Variation: ComponentStoryObj<typeof Ranking> = {
-  args: { onClick: action('クリック') },
-  parameters: {
-    docs: {
-      description: {
-        story: `Storyの説明マークダウン。`,
-      },
-    },
   },
 }
