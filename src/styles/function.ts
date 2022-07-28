@@ -10,15 +10,20 @@ export const breakpoints = {
 } as const
 
 //メディアクエリ
-export const mq = (key: keyof typeof breakpoints): string => `@media (min-width: ${breakpoints[key]}px)`
+export const mq = (key: keyof typeof breakpoints): string =>
+  `@media (min-width: ${breakpoints[key]}px)`
 
 //display:none用
-export const displayNoneMin = (key: keyof typeof breakpoints): SerializedStyles => css`
+export const displayNoneMin = (
+  key: keyof typeof breakpoints
+): SerializedStyles => css`
   @media (min-width: ${breakpoints[key]}px) {
     display: none;
   }
 `
-export const displayNoneMax = (key: keyof typeof breakpoints): SerializedStyles => css`
+export const displayNoneMax = (
+  key: keyof typeof breakpoints
+): SerializedStyles => css`
   @media (max-width: ${breakpoints[key]}px) {
     display: none;
   }
@@ -53,4 +58,17 @@ export const displayNone = (
       display: none;
     }
   `
+}
+
+export const clampFontSize = (
+  minFontSize: number,
+  maxFontSize: number,
+  minViewPort = 360,
+  maxViewPort = 414
+): string => {
+  //傾き
+  const a = (maxFontSize - minFontSize) / (maxViewPort - minViewPort)
+  //切片
+  const b = minFontSize - a * minViewPort
+  return `clamp(${minFontSize}px, ${b}px + ${a * 100}vw, ${maxFontSize}px)`
 }

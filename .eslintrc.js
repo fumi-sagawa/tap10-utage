@@ -14,7 +14,13 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'simple-import-sort', 'import'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'next', 'next/core-web-vitals', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'next',
+    'next/core-web-vitals',
+    'prettier',
+  ],
   rules: {
     'no-console': ['warn', { allow: ['warn', 'info', 'error'] }], // console.logが残っていればwarn
     'no-restricted-syntax': [
@@ -38,7 +44,10 @@ module.exports = {
     'prefer-arrow-callback': 'error', // arrow functionを許可
     'prefer-const': 'error', // const推奨
     'func-style': ['error', 'expression'], // 関数式を使わなければいけない
-    'no-restricted-imports': ['error', { paths: [{ name: 'react', importNames: ['default'] }] }], // reactの明示的なimportは不要なので禁止
+    'no-restricted-imports': [
+      'error',
+      { paths: [{ name: 'react', importNames: ['default'] }] },
+    ], // reactの明示的なimportは不要なので禁止
     'react/prop-types': 'off', // ts使うので不要
     'react/react-in-jsx-scope': 'off', // reactはグローバルなので不要
     'react/display-name': 'error', // 無名関数を禁止する
@@ -51,8 +60,15 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     // '@typescript-eslint/explicit-module-boundary-types': 'warn',
-    '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
-    '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }], // 未使用変数
+    '@typescript-eslint/consistent-type-imports': [
+      'warn',
+      { prefer: 'type-imports' },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
+    ], // 未使用変数
+    '@next/next/no-img-element': 'off',
   },
   overrides: [
     // 一部ルールを除外する

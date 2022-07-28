@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Snd from 'snd-lib'
 
 import { supabase } from '@/lib/supabaseClient'
-import { userIdAtom, userInfoAtom } from '@/store/userInfoStore'
+import { userIdAtom, userInfoAtom, userTeamJpAtom } from '@/store/userInfoStore'
 import type { Entry } from '@/types/supabase'
 
 export const usePlay = (userLength: number) => {
@@ -18,6 +18,7 @@ export const usePlay = (userLength: number) => {
   const [time, setTime] = useState<number>(timeLimit)
   const [isSoundOn, setIsSoundOn] = useState(false)
   const userInfo = useAtomValue(userInfoAtom)
+  const userTeamJp = useAtomValue(userTeamJpAtom)
   const [snd, setSnd] = useState<Snd>()
   const userId = useAtomValue(userIdAtom)
 
@@ -109,6 +110,7 @@ export const usePlay = (userLength: number) => {
     isSoundOn,
     toggleSound,
     userInfo,
+    userTeamJp,
     isEnd,
   }
 }

@@ -8,8 +8,8 @@ type TextWithLabelProps = {
 export const TextWithLabel = (props: TextWithLabelProps) => {
   return (
     <div css={styles.container}>
-      <span>{props.title}</span>
-      <p>{props.text}</p>
+      <span css={styles.title}>{props.title}</span>
+      <p css={styles.text}>{props.text}</p>
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { Spacer } from '@/components/parts/Spacer'
 import { memberInfoList } from '@/constants/memberInfo'
 
 import { Game } from './components/Game'
@@ -19,6 +20,7 @@ export const Play = () => {
     isSoundOn,
     toggleSound,
     userInfo,
+    userTeamJp,
     isEnd,
   } = usePlay(memberInfoList.length)
 
@@ -28,37 +30,46 @@ export const Play = () => {
       : memberInfoList[userNumber]?.illustrationImageSrc
 
   return (
-    <div css={styles.container}>
-      <h1 css={styles.title}>TAM30周年記念ゲームアプリ タップバトル</h1>
-      <p>
-        {userInfo.team} {userInfo.name} さんの挑戦
-      </p>
-      {pageStae == 'playng' && (
-        <Game
-          isPlayng={isPlayng}
-          isEnd={isEnd}
-          time={time}
-          timeLimit={timeLimit}
-          imageSrc={imageSrc}
-          // imageSrc={imageSrc}
-          onClickTapButton={handleClickTapButton}
-          tapCount={tapCount}
-          onClickStart={startGame}
-          onClickResult={handleClickResult}
-          onClickToggle={toggleSound}
-          isSoundOn={isSoundOn}
-        />
-      )}
-      {pageStae == 'result' && (
-        <Result
-          tapCount={tapCount}
-          memberIllustrationImageSrc={
-            memberInfoList[userNumber]?.illustrationImageSrc
-          }
-          memberName={memberInfoList[userNumber]?.name}
-          memberProfileImageSrc={memberInfoList[userNumber]?.profileImageSrc}
-        />
-      )}
+    <div css={styles.wrapper}>
+      <div css={styles.container}>
+        <h1 css={styles.title}>TAM30周年記念ゲームアプリ タップバトル</h1>
+        <Spacer margin={34} />
+        <p css={styles.caption}>
+          <span css={styles.name}>
+            {userTeamJp} {userInfo.name}
+          </span>{' '}
+          さんの挑戦
+        </p>
+        <Spacer margin={8} />
+        {pageStae === 'playng' && !isPlayng ? (
+          <p css={styles.caption}>{timeLimit / 1000}秒で何回タップできるか？</p>
+        ) : (
+          <Spacer margin={18} />
+        )}
+        {pageStae === 'playng' && (
+          <Game
+            isPlayng={isPlayng}
+            isEnd={isEnd}
+            time={time}
+            imageSrc={imageSrc}
+            onClickTapButton={handleClickTapButton}
+            onClickStart={startGame}
+            onClickResult={handleClickResult}
+            onClickToggle={toggleSound}
+            isSoundOn={isSoundOn}
+          />
+        )}
+        {pageStae === 'result' && (
+          <Result
+            tapCount={tapCount}
+            memberIllustrationImageSrc={
+              memberInfoList[userNumber]?.illustrationImageSrc
+            }
+            memberName={memberInfoList[userNumber]?.name}
+            memberProfileImageSrc={memberInfoList[userNumber]?.profileImageSrc}
+          />
+        )}
+      </div>
     </div>
   )
 }

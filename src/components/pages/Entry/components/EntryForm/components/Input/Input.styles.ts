@@ -1,8 +1,14 @@
 import { css } from '@emotion/react'
 
+import { variables } from '@/styles/variables'
+
 export const container = css`
   display: grid;
-  gap: 4px;
+  gap: 8px;
+`
+
+export const label = css`
+  color: ${variables.fontColorWhite};
 `
 
 export const inner = css`
@@ -11,11 +17,12 @@ export const inner = css`
 `
 
 export const input = css`
-  padding: 10px 15px;
+  padding: 18px 16px;
   font-size: 16px;
-  border-radius: 3px;
-  border: 2px solid #ddd;
+  border-radius: 4px;
+  border: 2px solid ${variables.mainColor};
+  background-color: white;
   &::placeholder {
-    color: #bbb;
+    color: '#6C6C6C';
   }
 `

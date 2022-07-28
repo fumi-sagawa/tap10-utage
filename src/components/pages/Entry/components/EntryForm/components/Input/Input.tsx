@@ -12,7 +12,9 @@ type InputProps = {
 export const Input = (props: InputProps) => {
   return (
     <div css={styles.container}>
-      <label htmlFor={props.id}>{props.label}</label>
+      <label css={styles.label} htmlFor={props.id}>
+        {props.label}
+      </label>
       <div css={styles.inner}>
         <input
           css={styles.input}

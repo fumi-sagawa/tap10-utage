@@ -1,14 +1,30 @@
 import { css } from '@emotion/react'
 
+import { variables } from '@/styles/variables'
+
+export { wrapper } from '@/styles/variables'
+
 export const container = css`
   display: grid;
-  justify-items: center;
-  max-width: 390px;
-  margin: 0 auto;
+  margin-top: 58px;
 `
 
 export const title = css`
   font-size: 16px;
+  text-align: center;
+  color: ${variables.fontColorWhite};
   font-weight: 600;
-  margin: 10px 0 20px;
+`
+
+export const caption = css`
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  color: ${variables.fontColorWhite};
+`
+
+export const name = css`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${variables.mainColor};
 `

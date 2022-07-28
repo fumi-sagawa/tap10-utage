@@ -1,9 +1,14 @@
 import { css } from '@emotion/react'
 
+import { variables } from '@/styles/variables'
+
 export const button = css`
-  border: 1px solid #333;
-  font-size: 16px;
-  color: #333333;
-  padding: 10px;
-  border-radius: 10px;
+  background-color: ${variables.mainColor};
+  color: ${variables.fontColorBlack};
+  font-size: 14px;
+  padding: 14px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 999px;
 `

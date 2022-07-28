@@ -9,8 +9,8 @@ type SoundProps = {
 
 export const Sound = (props: SoundProps) => {
   return (
-    <div>
-      SOUND
+    <div css={styles.container}>
+      <span>サウンド</span>
       <ToggleSwitch {...props} />
     </div>
   )

@@ -39,6 +39,7 @@ export const EntryForm = (props: Props) => {
           />
         )}
       />
+      <div css={styles.spacerMidium}></div>
       <Controller
         name="name"
         control={methods.control}
@@ -53,8 +54,9 @@ export const EntryForm = (props: Props) => {
           />
         )}
       />
+      <div css={styles.spacerLarge}></div>
       <Button
-        text={'エントリー'}
+        text={'確認画面へ'}
         type={'submit'}
         disabled={!methods.formState.isValid} // here
       />

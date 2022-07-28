@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Spacer } from '@/components/parts/Spacer'
 
 import * as styles from './Result.styles'
 import { useResult } from './useResult'
@@ -14,17 +14,27 @@ export const Result = (props: ResultProps) => {
   const { isModalVisible, toggleModal } = useResult()
   return (
     <div css={styles.container}>
-      <p>あなたの結果は</p>
-      <p>{props.tapCount}回</p>
-      <p>結果発表をお待ちください (画面が自動で変わります)</p>
+      <div css={styles.resultContainer}>
+        <p css={styles.resultText}>あなたの結果は</p>
+        <p>
+          <span css={styles.count}>{props.tapCount}</span>
+          <span css={styles.unit}>回</span>
+        </p>
+      </div>
+      <Spacer margin={40} />
+      <p css={styles.text}>
+        結果発表をお待ちください
+        <br /> (画面が自動で変わります)
+      </p>
+      <Spacer margin={32} />
       <p>２回目の挑戦はなしです</p>
+      <Spacer margin={64} />
       <div css={styles.imageWrapper}>
         <div css={styles.imageContainer}>
-          <Image
+          <img
             src={props.memberIllustrationImageSrc}
             alt="TAMメンバーの素敵な似顔絵"
-            objectFit={'cover'}
-            layout={'fill'}
+            css={styles.image}
           />
         </div>
         <button css={styles.profileButton} onClick={toggleModal}>
@@ -33,13 +43,10 @@ export const Result = (props: ResultProps) => {
       </div>
       {isModalVisible && (
         <div css={styles.modalWrapper} onClick={toggleModal}>
-          <button css={styles.modalButton}>バツ</button>
-          <Image
+          <img
+            css={styles.modalImage}
             src={props.memberProfileImageSrc}
             alt="TAMメンバーの素敵なプロフィール"
-            objectFit={'cover'}
-            height={400}
-            width={300}
           />
         </div>
       )}
