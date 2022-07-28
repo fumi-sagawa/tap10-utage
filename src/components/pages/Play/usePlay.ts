@@ -88,6 +88,7 @@ export const usePlay = (userLength: number) => {
   //サウンド
   useEffect(() => {
     setSnd(new Snd())
+    changeImage()
   }, [])
   useEffect(() => {
     snd?.load(Snd.KITS.SND01)
