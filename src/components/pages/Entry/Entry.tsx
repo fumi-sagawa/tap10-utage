@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { usePreloadImage } from '@/hooks/usePreloadImage'
 
 import { Confirmation } from './components/Confirmation'
 import { EntryForm } from './components/EntryForm'
@@ -17,6 +17,8 @@ export const Entry = () => {
     loading,
     selectOptions,
   } = useEntry()
+  //画像のプリロード
+  usePreloadImage()
 
   if (loading) return <div>loading...</div>
 
