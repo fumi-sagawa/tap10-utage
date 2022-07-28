@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof TapButton>
 
 export const Index: ComponentStoryObj<typeof TapButton> = {
-  args: { isPlaying: false, onClick: action('クリック'), tapCount: 0 },
+  args: { isPlaying: false, onClick: action('クリック') },
   parameters: {
     docs: {
       description: {
