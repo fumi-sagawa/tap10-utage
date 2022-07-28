@@ -8,7 +8,7 @@ import type { Entry } from '@/types/supabase'
 
 export const usePlay = (userLength: number) => {
   //制限時間
-  const timeLimit = 5000
+  const timeLimit = 20000
 
   const [isPlayng, setIsPlaying] = useState<boolean>(false)
   const [isEnd, setIsEnd] = useState<boolean>(false)
