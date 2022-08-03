@@ -7,8 +7,7 @@ export { wrapper } from '@/styles/variables'
 
 export const container = css`
   display: grid;
-
-  margin-top: 80px;
+  padding: 80px 0;
 `
 
 export const title = css`

@@ -4,6 +4,13 @@ export const rankingContainer = css`
   display: grid;
   gap: 48px;
   justify-items: center;
+  padding: 20px 0;
+  background-color: #2f75d6;
+  color: white;
+  //高さがあるコンテンツ分除算
+  max-height: calc(100vh - 27px - 40px - 50px - 50px);
+  border-radius: 16px;
+  overflow-y: auto;
 `
 export const buttonContainer = css`
   display: grid;
@@ -43,7 +50,9 @@ export const modalButtonContainer = css`
 
 export const restart = css`
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  width: 200px;
+  top: 40px;
+  right: 40px;
+  overflow: hidden;
   z-index: 10;
 `

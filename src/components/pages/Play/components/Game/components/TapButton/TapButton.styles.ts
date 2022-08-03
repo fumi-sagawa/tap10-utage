@@ -11,6 +11,8 @@ export const container = css`
 export const background = css`
   height: auto;
   width: 100%;
+  user-select: none;
+  pointer-events: none;
 `
 
 const place = css`
