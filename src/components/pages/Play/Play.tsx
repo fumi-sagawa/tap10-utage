@@ -26,7 +26,7 @@ export const Play = () => {
 
   const imageSrc =
     tapCount === 29
-      ? '/tamkun.png'
+      ? '/tam30.png'
       : memberInfoList[userNumber]?.illustrationImageSrc
 
   return (

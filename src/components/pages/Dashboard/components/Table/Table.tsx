@@ -14,7 +14,7 @@ export const Table = (props: Props) => {
   return (
     <div css={styles.container}>
       <h2 css={styles.title}>エントリー</h2>
-      <ul>
+      <ul css={styles.table}>
         <li css={styles.listItem}>
           <div>時間</div>
           <div>チーム名</div>

@@ -27,7 +27,7 @@ export const Result = (props: ResultProps) => {
         <br /> (画面が自動で変わります)
       </p>
       <Spacer margin={32} />
-      <p>２回目の挑戦はなしです</p>
+      <p css={styles.caution}>２回目の挑戦はなしです</p>
       <Spacer margin={64} />
       <div css={styles.imageWrapper}>
         <div css={styles.imageContainer}>
@@ -37,8 +37,9 @@ export const Result = (props: ResultProps) => {
             css={styles.image}
           />
         </div>
-        <button css={styles.profileButton} onClick={toggleModal}>
-          {props.memberName}さん プロフィールはこちら
+        <button css={styles.profileContainer} onClick={toggleModal}>
+          <p css={styles.profileText}>{props.memberName} さん </p>
+          <p css={styles.profileLink}>プロフィールはこちら</p>
         </button>
       </div>
       {isModalVisible && (

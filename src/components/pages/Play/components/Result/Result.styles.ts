@@ -34,6 +34,20 @@ export const text = css`
   letter-spacing: 0.08em;
 `
 
+export const caution = css`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${variables.fontColorWhite};
+  letter-spacing: 0.08em;
+  display: grid;
+  align-items: center;
+  grid-auto-flow: column;
+  gap: 8px;
+  &::before {
+    content: url(/forbidden.svg);
+  }
+`
+
 export const imageWrapper = css`
   display: grid;
   justify-items: center;
@@ -53,6 +67,26 @@ export const image = css`
   width: 100%;
   padding: 20px;
   object-fit: contain;
+`
+
+export const profileContainer = css`
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+`
+
+export const profileText = css`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${variables.mainColor};
+  letter-spacing: 0.08em;
+`
+export const profileLink = css`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${variables.fontColorWhite};
+  letter-spacing: 0.08em;
+  text-decoration: underline;
 `
 
 export const profileButton = css`
