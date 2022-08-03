@@ -53,18 +53,18 @@ export const usePlay = (userLength: number) => {
   }
 
   const handleClickResult = async () => {
-    setPageState('result')
     const { data, error } = await supabase.from<Entry>('entry').upsert({
       id: userId,
       tap_count: tapCount,
       played: true,
     })
-    if (error) {
-      //TODO:エラーページに飛ばそうね
-      throw error
+    if (data) {
+      setPageState('result')
     }
-    // if (data) {
-    // }
+    if (error) {
+      alert('エラーが発生しました…🙇‍♂️再度結果を見るボタンを押してください！')
+      // throw error
+    }
   }
 
   //カウンター
