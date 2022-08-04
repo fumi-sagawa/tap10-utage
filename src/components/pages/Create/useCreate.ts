@@ -10,12 +10,14 @@ export const useCreate = () => {
   const [pageState, setPageState] = useState<'create' | 'share'>('create')
   const [shareUrl, setShareUrl] = useState('')
   const [gameKey, setGameKey] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setGameKey(uuidv4())
   }, [])
 
   const handleClickCreate = async () => {
+    setLoading(true)
     //supabaseでgameを作成
     const { data, error } = await supabase.from<Game>('game').insert({
       finished: false,
@@ -23,15 +25,17 @@ export const useCreate = () => {
     })
     if (error) {
       // TODO:エラーページに飛ばそうかな
+      alert('ゲームの作成に失敗しました。もう一度お試しください🙇‍♂️')
       throw error
     }
     if (data) {
       setShareUrl(`${process.env.NEXT_PUBLIC_URL}/entry?key=${gameKey}`)
       setPageState('share')
     }
+    setLoading(false)
   }
   const handleClickAdmin = () => {
     router.push(`/dashboard/?key=${gameKey}`)
   }
-  return { handleClickCreate, pageState, shareUrl, handleClickAdmin }
+  return { handleClickCreate, pageState, shareUrl, handleClickAdmin, loading }
 }

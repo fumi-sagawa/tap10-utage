@@ -11,4 +11,7 @@ export const button = css`
   text-align: center;
   font-weight: 600;
   border-radius: 999px;
+  &:disabled {
+    opacity: 0.5;
+  }
 `
