@@ -17,6 +17,7 @@ export const usePlay = (userLength: number) => {
   const [userNumber, setUserNumber] = useState<number>(0)
   const [time, setTime] = useState<number>(timeLimit)
   const [isSoundOn, setIsSoundOn] = useState(false)
+  const [soundNumber, setSoundNumber] = useState(0)
   const userInfo = useAtomValue(userInfoAtom)
   const userTeamJp = useAtomValue(userTeamJpAtom)
   const [snd, setSnd] = useState<Snd>()
@@ -35,6 +36,24 @@ export const usePlay = (userLength: number) => {
     setUserNumber(randamRange(userLength))
   }
 
+  const playSound = (soundNumber: number) => {
+    if (soundNumber === 1) {
+      snd?.playButton()
+    }
+    if (soundNumber === 2) {
+      snd?.playNotification()
+    }
+    if (soundNumber === 3) {
+      snd?.playSwipe()
+    }
+    if (soundNumber === 4) {
+      snd?.playTap()
+    }
+    if (soundNumber === 5) {
+      snd?.playToggleOn()
+    }
+  }
+
   const handleClickTapButton = () => {
     setTapCount((count) => count + 1)
     changeImage()
@@ -42,7 +61,7 @@ export const usePlay = (userLength: number) => {
       if (tapCount === 29) {
         snd?.playCelebration()
       }
-      snd?.playButton()
+      playSound(soundNumber)
     }
   }
 
@@ -96,7 +115,24 @@ export const usePlay = (userLength: number) => {
 
   const toggleSound = () => {
     setIsSoundOn(!isSoundOn)
+    if (isSoundOn) {
+      return
+    }
+    //toggleをオンにする際のロジック
+    if (soundNumber === 5) {
+      setSoundNumber(1)
+      return
+    }
+    setSoundNumber((prev) => prev + 1)
   }
+
+  useEffect(() => {
+    if (!isSoundOn) {
+      return
+    }
+    playSound(soundNumber)
+    console.log(soundNumber)
+  }, [soundNumber])
 
   return {
     handleClickTapButton,

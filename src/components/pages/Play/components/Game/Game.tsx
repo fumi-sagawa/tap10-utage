@@ -43,7 +43,10 @@ export const Game = (props: GameProps) => {
             />
 
             <Sound onClick={props.onClickToggle} isOn={props.isSoundOn} />
-            <p css={styles.caution}>※ ONにするとタップ時に音がなります</p>
+            <div>
+              <p css={styles.caution}>※ ONにするとタップ時に音がなります</p>
+              <p css={styles.caution}>※ マナーモードは解除してください</p>
+            </div>
           </div>
         </>
       )}

@@ -1,7 +1,9 @@
 import { css } from '@emotion/react'
 
+import { clampFontSize } from '@/styles/function'
+
 export const title = css`
-  font-size: 24px;
+  font-size: ${clampFontSize(20, 24)};
   font-weight: 600;
 `
 

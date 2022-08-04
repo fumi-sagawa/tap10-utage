@@ -1,11 +1,12 @@
 import { css } from '@emotion/react'
 
+import { clampFontSize } from '@/styles/function'
 import { variables } from '@/styles/variables'
 
 export { wrapper } from '@/styles/variables'
 
 export const title = css`
-  font-size: 16px;
+  font-size: ${clampFontSize(14, 16)};
   text-align: center;
   color: ${variables.fontColorWhite};
   font-weight: 600;
