@@ -25,7 +25,7 @@ export const Input = (props: InputProps) => {
           onBlur={props.onBlur}
           placeholder={'入力してください'}
         />
-        {props.error ?? <p>{props.error}</p>}
+        {props.error && <p css={styles.error}>{props.error}</p>}
       </div>
     </div>
   )

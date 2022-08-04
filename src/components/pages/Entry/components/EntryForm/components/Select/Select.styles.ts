@@ -33,3 +33,6 @@ export const select = (selected: boolean) => css`
   background-color: white;
   color: ${selected ? variables.fontColorBlack : '#6C6C6C'};
 `
+export const error = css`
+  color: ${variables.fontColorWhite};
+`

@@ -26,3 +26,6 @@ export const input = css`
     color: '#6C6C6C';
   }
 `
+export const error = css`
+  color: ${variables.fontColorWhite};
+`
