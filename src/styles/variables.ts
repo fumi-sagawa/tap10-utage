@@ -18,7 +18,11 @@ export const wrapper = css`
     content: '';
     background-color: ${variables.backGroundColor};
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* inset: 0; */
     z-index: -1;
   }
 `
