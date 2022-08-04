@@ -12,6 +12,6 @@ export const button = css`
   font-weight: 600;
   border-radius: 999px;
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 `
